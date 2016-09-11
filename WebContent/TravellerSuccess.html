@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Book</title>
+
+<script>
+var timepattern=/^\d{1,2}:\d{2}([ap]m)?$/;
+var timepattern2=/^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
+
+function validateForm()
+{
+	 var dd=document.form1.dd.value;
+	 var mmm=document.form1.mmm.value;
+	 var yyyy=document.form1.yyyy.value;
+	 
+	 if(!validdate(dd,mmm,yyyy))
+	 {
+	  document.getElementById('pointdob').innerHTML="Please select a valid date.";
+	  return false;
+	 }
+	  
+	 document.getElementById('pointdob').innerHTML="";
+	 
+	 var hh=document.form1.hh.value;
+	 var mm=document.form1.mm.value;
+	 if(!validtime(hh,mm))
+	 {
+		  document.getElementById('pointtm').innerHTML="Please enter a valid time.";
+		  return false;
+		 }
+	 document.getElementById('pointtm').innerHTML="";
+	 
+	 x= document.getElementById("address");
+	 if((x.value==null || x.value=="") && (document.form1.home[0].checked==false))
+	 {
+	  x.value="";
+	  document.getElementById('pointadrs').innerHTML="Please enter pick-up address.";
+	  x.focus();
+	  return false;
+	 }
+	 else if(x.value.length<20)
+	   {
+	  x.value="";
+	  document.getElementById('pointadrs').innerHTML="Please enter atleast 20 characters.";
+	  x.focus();
+	  return false;
+	 }
+	 document.getElementById('pointadrs').innerHTML="";
+	 document.getElementById('pointhome').innerHTML="";
+	 
+	 var y= document.getElementById("address2");
+	 if((y.value==null || y.value=="") &&(document.form1.home2[0].checked==false))
+	 {
+	  y.value="";
+	  document.getElementById('pointadrs2').innerHTML="Please enter destination address.";
+	  y.focus();
+	  return false;
+	 }
+	 else if(y.value.length<20)
+	   {
+	  y.value="";
+	  document.getElementById('pointadrs2').innerHTML="Please enter atleast 20 characters.";
+	  y.focus();
+	  return false;
+	 }
+	 
+	 else if(x.value==y.value){
+		 x.value="";
+		 y.value="";
+		 document.getElementById('pointadrs').innerHTML="Pick-up and destination addresses cannot be the same";
+		 x.focus();
+		 return false;
+	 }
+	 
+	 else if ((document.form1.home[0].checked==true)&&(document.form1.home2[0].checked==true))
+	{
+		 document.getElementById('pointadrs').innerHTML="Pick-up and destination addresses cannot be the same";
+		 x.focus();
+		 return false;
+	}
+	 document.getElementById('pointadrs2').innerHTML="";
+	 document.getElementById('pointhome2').innerHTML="";
+
+	 
+	return confirm("Do you want to submit the form?");
+	}
+	 
+	
+	function validdate(dd,mm,yyyy)
+	 {
+	  var dateobj = new Date(yyyy, mm, dd);
+	  var datecurrent= new Date();
+	  if((dateobj.getMonth()!=mm)||(dateobj.getDate()!=dd)||(dateobj.getFullYear()!=yyyy)||(dateobj<datecurrent))
+	  {
+	   return false;
+	  }
+	  return true;
+	 }
+	 
+	function validtime(hh,mm){
+		
+		if(hh=="HH" || mm=="MM")
+			return false;
+		return true;
+	}
+	 function confirmreset()
+	 {
+	  if(confirm("Do you want to reset the form?"))
+	{
+	 document.getElementById('pointfn').innerHTML="";
+	 document.getElementById('pointln').innerHTML="";
+	 document.getElementById('pointgendr').innerHTML="";
+	 document.getElementById('pointdob').innerHTML="";
+	 document.getElementById('pointadrs').innerHTML="";
+	 document.getElementById('pointadrs2').innerHTML="";
+	 document.getElementById('pointhome').innerHTML="";
+	 document.getElementById('pointhome2').innerHTML="";
+	 document.getElementById('pointcontct').innerHTML="";
+	 document.getElementById('pointemail').innerHTML="";
+	 return true;
+	}
+	else
+	 return false;
+	 }
+</script>
+
+</head>
+<body background="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\images\
+kolkata.jpg">
+<style type="text/css" scoped>
+div{
+background-size: 720px 1080px;
+}
+img{
+opacity: 0.55; 
+filter:alpha(opacity=40)
+}
+</style>
+
+<table>
+<tr>
+<table>
+<tr>
+<td height=5% width=5% style="font-size: 16px; font-family: Bradley Hand ITC; text-align: left">
+<a href="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\contact.html">Contact Us</a>
+&nbsp;&nbsp;
+<a href="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\Feedback.html">Feedback</a>
+&nbsp;&nbsp;
+<a href="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\Kolkata.html" style="font-size:10">Log Out</a>
+</td>
+</tr>
+
+<tr>
+<td height=5% width=5% style="font-size: 18px; text-align:right">
+<em><b>Region:Kolkata</b></em>
+</td>
+</tr>
+
+<tr>
+<td height=* width=*>
+<h1 style = "text-align: center; font-size:80px; font-familiy:Bradley Hand ITC; color:#00CCFF">Hire-A-Cab</h1>
+</td>
+</tr>
+</table>
+
+<style>
+#tab-container
+{
+   float: left;
+   margin: 50px 0 0 0;
+   width: 126px;
+}
+#tab-container ul
+{
+   list-style: none;
+   text-align: center;
+}
+#tab-container ul li
+{
+   border-top: 1px solid #666;
+   border-right: 1px solid #666;
+   border-bottom: 1px solid #666;
+   border-left: 8px solid #666;
+   background-color: #0099FF;
+   margin: 8px 0;
+}
+#tab-container ul li a,
+#tab-container ul li a:visited
+{
+   text-decoration: none;
+   color: #666;
+   display: block;
+   padding: 15px 5px;
+}
+#tab-container ul li:hover
+{
+   border-left: 8px solid #333;
+}
+#tab-container ul li a:hover
+{
+   color: #000;
+}
+#tab-container ul li.selected
+{
+   border-right: none;
+   background-color: #fff;
+   border-left: 8px solid #00;
+}
+#main-container
+{
+   min-height: 480px;
+   width: 740px;
+   margin: 0 0 0 125px;
+   padding: 20px;
+   background-color: #FFE4E1;
+   border: 1px solid #888;
+}
+ </style>
+ <div class="container">
+ <div class="content">
+ <form name="form1" action="accountBook" method="post">
+  <div id="content">
+   <div id="tab-container">
+      <ul>
+         <li class="selected"><a href="">Book-A-Cab</a></li>
+         <li><a href="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\TravellerSuccess2.html">View Previous Bookings</a></li>
+         <li><a href="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\TravellerSuccess3.html">Update Existing Request</a></li>
+         <li><a href="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\TravellerSuccess4.html">Account Details</a>
+         <li><a href="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\TravellerSuccess5.html">Instructions</a></li>
+      </ul>
+   </div>
+   <div id="main-container">
+   <h3 style= "font-family: Bradley Hand ITC; font-size: 28px; color: #A52A2A; text-align: center">
+   Book-A-Cab: Traveling Details
+   </h3>
+   <div style="background: ; padding: 25px">
+	<style type="text/css" scoped>
+	td { text-align:left; font-family: verdana,arial; color: #064073; font-size: 1.00em; }
+	input { border: 1px solid #CCCCCC; border-radius: 5px; color: #666666; display: inline-block; font-size: 1.00em;  
+	padding: 5px; width: 100%; }
+	input[type="button"], input[type="reset"], input[type="submit"] 
+	{ height: auto; width: auto; cursor: pointer; box-shadow: 0px 0px 5px #0361A8; float: right; margin-top: 10px; }
+	table.center { margin-left:auto; margin-right:auto; }
+	.error { font-family: verdana,arial; color: #D41313; font-size: 1.00em; }
+	</style>
+
+<table>
+ <tr>
+  <td><LABEL for="dob">Date of Booking<sup style="color:#F00">* </sup></LABEL></td>
+  <td> 
+  <select name="dd">
+        <option value="dd">DD</option>
+        <script type="text/javascript">
+   for(var i=1;i<32;i++)
+    document.write("<option value='"+i+"'>" + i+"</option> ");
+   </script>
+        </select>
+                 <select name="mmm">
+         <option value="mmm">MMM</option>
+         <option value="0">JAN</option>
+         <option value="1">FEB</option>
+         <option value="2">MAR </option>
+         <option value="3">APR</option>
+         <option value="4">MAY</option>
+         <option value="5">JUN</option>
+         <option value="6">JUL</option>
+         <option value="7">AUG</option>
+         <option value="8">SEP</option>
+         <option value="9">OCT</option>
+         <option value="10">Nov</option>
+         <option value="11">DEC</option>
+        </select>
+        <select name="yyyy">
+           <option value="yyyy"selected>YYYY</option>
+        <script type="text/javascript">
+   var dt= new Date();
+   for(var i=2014;i<=2015;i++)
+    document.write("<option value='"+i+"'>" + i+"</option> ");
+  </script>
+  </select>
+   </td>
+   <td width="200px"><i style="color:red;" id="pointdob"></i>
+  </td>
+ </tr>
+
+<tr>
+<td><LABEL for="timing">Time<sup style="color:#F00">* </sup></LABEL></td>
+  <td>
+  <select name="hh">
+  	<option value="hh">HH</option>
+  	<script type="text/javascript">
+   		for(var i=1;i<25;i++)
+    	document.write("<option value=''"+i+"'>" + i+"</option> ");
+   </script>
+   </select>
+   
+   <select name="mm">
+   <option value="MM"selected>MM</option>
+   <script type="text/javascript">
+   for(var i=00;i<=60;i++)
+    document.write("<option value='"+i+"'>" + i+"</option> ");
+  </script>
+  </select>
+  </td>
+  <td width="200px"><i style="color:red;" id="pointtm"></i>   
+  </td>
+ </tr>
+ 
+ 
+ <tr>
+  <td><LABEL for="address" style="text-align:left;">Pick-up Address<sup style="color:#F00">* </sup></LABEL></td>
+  <td><textarea id="address"  name="address" rows="5" cols="35"></textarea></td>
+  <td width="200px"><i style="color:red;" id="pointadrs"></i>   
+  </td> 
+	<td><INPUT type="radio" name="home"> Use residential address as pick-up address
+	<td width="200px"> <i style="color:red;" id="pointhome"></i></td>
+ </tr>
+ 
+ <tr>
+  <td><LABEL for="address2" style="text-align:left;">Destination Address<sup style="color:#F00">* </sup></LABEL></td>
+  <td><textarea id="address2"  name="address2" rows="5" cols="35"></textarea></td>
+  <td width="200px"><i style="color:red;" id="pointadrs2"></i>   
+  </td>
+  <td><INPUT type="radio" name="home2"> Use residential address as destination address
+	<td width="200px"> <i style="color:red;" id="pointhome2"></i></td>
+ </tr>
+ </table>
+ 
+ <table class="center">
+ 
+ <tr>
+ <td><input type="submit" onClick="return validateForm()" value="Proceed to Payment" style="align:center">
+  <input type="reset" onClick="return confirmreset()"></td>
+ </tr>
+ 
+ <tr>
+  <td></td>
+  <td style="font-size:12px;text-align:right;"><br/><i style="color:red;font-size:12px;align:right;" >* - Mandatory</i></td>
+ </tr>
+ </table>
+ </div></div></div>
+ </form>
+ </div></div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<html>
+<head>
+<title>Update existing booking</title>
+<script>
+
+function validateForm()
+{	 
+	 var x= document.getElementById("pickup");
+	 var y= document.getElementById("dest");
+	 var dd=document.form1.dd.value;
+	 var mmm=document.form1.mmm.value;
+	 var yyyy=document.form1.yyyy.value;
+	 var hh=document.form1.hh.value;
+	 var mm=document.form1.mm.value;
+
+	 
+	 if(x.value==null || x.value=="" ||y.value==null || y.value=="" ||hh=="HH" || mm=="MM" ||dd=="DD" ||mmm=="MMM" ||yyyy=="YYYY")
+	 {
+	  x.value="";
+	  y.value="";
+	  document.getElementById('pointpick').innerHTML="Please enter at least one field.";
+	  x.focus();
+	  return false;
+	 }
+	 
+	 else if(x.value.length<20)
+	   {
+	  x.value="";
+	  document.getElementById('pointpick').innerHTML="Please enter atleast 20 characters.";
+	  x.focus();
+	  return false;
+	 }
+	 document.getElementById('pointpick').innerHTML="";
+	 
+	else if(y.value.length<20)
+	   {
+	  y.value="";
+	  document.getElementById('pointdest').innerHTML="Please enter atleast 20 characters.";
+	  x.focus();
+	  return false;
+	 }
+	 document.getElementById('pointdest').innerHTML="";
+	 
+	 if(!validdate(dd,mmm,yyyy))
+	 {
+	  document.getElementById('pointdob').innerHTML="Please select a valid date.";
+	  return false;
+	 }
+	  
+	 document.getElementById('pointdob').innerHTML="";
+	 
+	 if(!validtime(hh,mm))
+	 {
+		  document.getElementById('pointtm').innerHTML="Please enter a valid time.";
+		  return false;
+		 }
+	 document.getElementById('pointtm').innerHTML="";
+
+return confirm("Do you want to submit the form?");
+}
+
+function validdate(dd,mm,yyyy)
+{
+ var dateobj = new Date(yyyy, mm, dd);
+ var datecurrent= new Date();
+ if((dateobj.getMonth()!=mm)||(dateobj.getDate()!=dd)||(dateobj.getFullYear()!=yyyy)||(dateobj<datecurrent))
+ {
+  return false;
+ }
+ return true;
+}
+
+function validtime(hh,mm)
+{
+	if(hh=="HH" || mm=="MM")
+		return false;
+	return true;
+}
+function confirmreset()
+{
+ 	if(confirm("Do you want to reset the form?"))
+	{
+		document.getElementById('pointdob').innerHTML="";
+		document.getElementById('pointpick').innerHTML="";
+		document.getElementById('pointdest').innerHTML="";
+		document.getElementById('pointtm').innerHTML="";
+		return true;
+	}
+	else
+		return false;
+}
+
+</script>
+</head>
+<body background="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\images\
+kolkata.jpg">
+<style type="text/css" scoped>
+div{
+background-size: 720px 1080px;
+}
+img{
+opacity: 0.55; 
+filter:alpha(opacity=40)
+}
+</style>
+<table>
+<tr>
+<td height=5% width=5% style="font-size: 16px; font-family: Bradley Hand ITC; text-align: left">
+<a href="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\contact.html">Contact Us</a>
+&nbsp;&nbsp;
+<a href="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\Feedback.html">Feedback</a>
+</td>
+<tr>
+<td height=5% width=5% style="font-size: 18px; text-align:right">
+<em><b>Region:Kolkata</b></em>
+</td>
+</tr>
+<tr>
+<td height=* width=*>
+<h1 style = "text-align: center; font-size:80px; font-familiy:Bradley Hand ITC; color:#00CCFF">Hire-A-Cab</h1>
+</td>
+</tr>
+</table>
+<marquee direction="right"><h1 style="font-family: Bradley Hand ITC; font-color:#00008b">Update Booking</h1></marquee>
+
+<div class="container">
+<div class="content">
+<form method="post" action="" name="form1">
+
+	<div style="text-align: center;">
+	<div style="box-sizing: border-box; display: inline-block; width: auto; max-width: 720px; 
+	background-color: #FFFFFF; border: 2px solid #0361A8; border-radius: 5px; box-shadow: 0px 0px 8px #0361A8; 
+	margin: 50px auto auto;">
+	<div style="background: #0361A8; border-radius: 5px 5px 0px 0px; padding: 15px;">
+	<span style="font-family: Bradley Hand ITC; color: #D4D4D4; font-size: 1.00em; font-weight:bold;">
+	Only fill in the fields that require updating. At least one field has to be filled</span></div>
+	
+	<div style="background: ; padding: 15px">
+	<style type="text/css" scoped>
+	td { text-align:left; font-family: Bradley Hand ITC; color: #064073; font-size: 1.00em; }
+	input { border: 1px solid #CCCCCC; border-radius: 5px; color: #666666; display: inline-block; 
+	font-size: 1.00em;  padding: 5px; width: 100%; }
+	input[type="button"], input[type="reset"], input[type="submit"] 
+	{ height: auto; width: auto; cursor: pointer; box-shadow: 0px 0px 5px #0361A8; float: right; margin-top: 10px; }
+	table.center { margin-left:auto; margin-right:auto; }
+	.error { font-family: Bradley Hand ITC; color: #D41313; font-size: 1.10em; }
+	</style>
+
+<table class='center'>
+<tr>
+<tr>
+  <td><LABEL for="pickup" style="text-align:left;">Pick-up Address</LABEL></td>
+  <td><textarea id="pickup"  name="pickup" rows="5" cols="35"></textarea></td>
+  <td width="200px"><i style="color:red;" id="pointpick"></i>   
+  </td>
+ </tr>
+ 
+<tr>
+  <td><LABEL for="dest" style="text-align:left;">Destination Address</LABEL></td>
+  <td><textarea id="dest"  name="dest" rows="5" cols="35"></textarea></td>
+  <td width="200px"><i style="color:red;" id="pointdest"></i>   
+  </td>
+ </tr>
+<tr>
+  <td><LABEL for="dob">Date of Birth</LABEL></td>
+  <td> 
+  <select id="dd">
+        <option value="dd">DD</option>
+        <script type="text/javascript">
+   for(var i=1;i<32;i++)
+    document.write("<option value='"+i+"'>" + i+"</option> ");
+   </script>
+        </select>
+                </select>
+                 <select id="mmm">
+         <option value="mmm">MMM</option>
+         <option value="0">JAN</option>
+         <option value="1">FEB</option>
+         <option value="2">MAR </option>
+         <option value="3">APR</option>
+         <option value="4">MAY</option>
+         <option value="5">JUN</option>
+         <option value="6">JUL</option>
+         <option value="7">AUG</option>
+         <option value="8">SEP</option>
+         <option value="9">OCT</option>
+         <option value="10">NOV</option>
+         <option value="11">DEC</option>
+        </select>
+        <select id="yyyy">
+           <option value="yyyy"selected>YYYY</option>
+        <script type="text/javascript">
+   var dt= new Date();
+   for(var i=2014;i<=2016;i++)
+    document.write("<option value='"+i+"'>" + i+"</option> ");
+  </script>
+  </select>
+   </td><td width="200px"><i style="color:red;" id="pointdob"></i>
+  </td>
+ </tr>
+
+<tr>
+<td><LABEL for="timing">Time</LABEL></td>
+  <td>
+  <select id="hh">
+  	<option value="hh">HH</option>
+  	<script type="text/javascript">
+   		for(var i=1;i<25;i++)
+    	document.write("<option value=''"+i+"'>" + i+"</option> ");
+   </script>
+   </select>
+   <select id="mm">
+   <option value="MM"selected>MM</option>
+   <script type="text/javascript">
+   for(var i=00;i<=60;i++)
+    document.write("<option value='"+i+"'>" + i+"</option> ");
+  </script>
+  </select>
+  </td>
+  <td width="200px"><i style="color:red;" id="pointtm"></i>   
+  </td>
+ </tr>
+ </table>
+
+<table class="center">
+<tr>
+<td><input type="Submit" value="Update Booking" onClick="return validateForm()"></td>
+<td>&nbsp;&nbsp;</td>
+<td><input type="reset" onClick="return confirmreset()"></td>
+</tr>
+</table>
+</div></div></div>
+</form>
+</div></div>
+</body>
+</html>

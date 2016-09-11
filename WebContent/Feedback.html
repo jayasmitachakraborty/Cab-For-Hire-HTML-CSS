@@ -1,0 +1,236 @@
+<html>
+<head>
+
+<script>
+function validateForm()
+{
+	var dd=document.form1.dd.value;
+	 var mmm=document.form1.mmm.value;
+	 var yyyy=document.form1.yyyy.value;
+	 
+	 if(!validdate(dd,mmm,yyyy))
+	 {
+	  document.getElementById('pointdob').innerHTML="Please select a valid date.";
+	  return false;
+	 }
+	 document.getElementById('pointdob').innerHTML="";
+	 
+	 var x=document.form1.request;
+	 if(x.value=="")
+	 {
+	  x.value="";
+	  document.getElementById('pointreq').innerHTML="Please enter the email id.";
+	  x.focus();
+	  return false;
+	 }
+	 document.getElementById('pointreq').innerHTML="";
+
+	 var rate=document.form1.rate.value;
+	 if(rate=="Rate Us")
+	{
+		 rate="";
+		 document.getElementById('pointrate').innerHTML="Please rate us.";
+		  return false;
+	}
+	 
+	 x= document.getElementById("feedback");
+	 if(x.value==null || x.value=="" )
+	 {
+	  x.value="";
+	  document.getElementById('pointfeed').innerHTML="Please enter pick-up address.";
+	  x.focus();
+	  return false;
+	 }
+	 document.getElementById('pointfeed').innerHTML="";
+	 
+	return confirm("Do you want to submit the form?");
+	}
+	 
+	
+	function validdate(dd,mm,yyyy)
+	 {
+	  var dateobj = new Date(yyyy, mm, dd);
+	  var datecurrent= new Date();
+	  if((dateobj.getMonth()!=mm)||(dateobj.getDate()!=dd)||(dateobj.getFullYear()!=yyyy))
+	  {
+	   return false;
+	  }
+	  else if(dateobj>datecurrent)
+	{
+		  alert("Date of journey must be before current date");
+		  return false;
+	}
+	  
+	  return true;
+	 }
+	 
+	 function confirmreset()
+	 {
+	  if(confirm("Do you want to reset the form?"))
+	{
+	 document.getElementById('pointdob').innerHTML="";
+	 document.getElementById('pointfeed').innerHTML="";
+	 document.getElementById('pointreq').innerHTML="";
+	 return true;
+	}
+	else
+	 return false;
+	 }
+</script>
+     
+</head>
+
+<body background="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\images\kolkata.jpg">
+<style type="text/css" scoped>
+div{
+background-size: 720px 1080px;
+}
+img{
+opacity: 0.55; 
+filter:alpha(opacity=40)
+}
+</style>
+
+<table>
+<tr>
+<td height=5% width=5%>
+<a href="H:\College\Heritage\HTML Project\workspace\Cab-For-Hire\WebContent\contact.html" style="font-size:10">Contact Us</a>
+&nbsp;&nbsp;
+<a href="" style="font-size:10">Feedback</a>
+</td>
+</tr>
+
+<tr>
+<td height=5% width=5% style="font-size: 18px; text-align:right">
+<em><b>Region:Kolkata</b></em>
+</td>
+</tr>
+
+<tr>
+<td height=* width=*>
+<h1 style = "text-align: center; font-size:80px; font-familiy:Bradley Hand ITC; color:#00CCFF">Hire-A-Cab</h1>
+</td>
+</tr>
+</table>
+
+<marquee direction="alternate" style="font-familiy:Bradley Hand ITC;">Your feedback is valuable</marquee>
+
+<div class="container">
+<div class="content">
+
+<form name="form1"  method="post">
+
+<div style="text-align: center;">
+<div style="box-sizing: border-box; display: inline-block; width: auto; max-width: 560px;
+	background-color: #FFFFFF; border: 2px solid #0361A8; border-radius: 5px; box-shadow: 0px 0px 8px #0361A8; 
+	margin: 50px auto auto;">
+<div style="background: #0361A8; border-radius: 5px 5px 0px 0px; padding: 15px;">
+<span style="font-family: Bradley Hand ITC; color: #D4D4D4; font-size: 2.10em; font-weight:bold;">
+	Fill in the Feedback Form</span></div>
+	
+<div style="background: ; padding: 25px">
+<style type="text/css" scoped>
+td { text-align:left; font-family: verdana,arial; color: #064073; font-size: 1.00em; }
+input { border: 1px solid #CCCCCC; border-radius: 5px; color: #666666; display: inline-block; font-size: 1.00em;  
+	padding: 5px; width: 100%; }
+input[type="button"], input[type="reset"], input[type="submit"] 
+	{ height: auto; width: auto; cursor: pointer; box-shadow: 0px 0px 5px #0361A8; float: right; margin-top: 10px; }
+table.center { margin-left:auto; margin-right:auto; }
+	.error { font-family: verdana,arial; color: #D41313; font-size: 1.00em; }
+</style>
+
+<table>
+ <tr>
+  <td><LABEL for="dob">Date of Journey<sup style="color:#F00">* </sup></LABEL></td>
+  <td> 
+  <select id="dd">
+        <option value="dd">DD</option>
+        <script type="text/javascript">
+   for(var i=1;i<32;i++)
+    document.write("<option value='"+i+"'>" + i+"</option> ");
+   </script>
+        </select>
+         <select id="mmm">
+         <option value="mmm">MMM</option>
+         <option value="0">JAN</option>
+         <option value="1">FEB</option>
+         <option value="2">MAR </option>
+         <option value="3">APR</option>
+         <option value="4">MAY</option>
+         <option value="5">JUN</option>
+         <option value="6">JUL</option>
+         <option value="7">AUG</option>
+         <option value="8">SEP</option>
+         <option value="9">OCT</option>
+         <option value="10">NOV</option>
+         <option value="11">DEC</option>
+        </select>
+  <select id="yyyy">
+           <option value="yyyy"selected>YYYY</option>
+        <script type="text/javascript">
+		var dt= new Date();
+   		for(var i=2014;i<=2016;i++)
+    	document.write("<option value='"+i+"'>" + i+"</option> ");
+  		</script>
+  </select>
+   </td><td width="200px"><i style="color:red;" id="pointdob"></i>
+  </td>
+   
+ <tr>
+  <td><LABEL for="request">Request-ID<sup style="color:red;">* </sup></LABEL></td>
+  <td><INPUT type="text" id="request"></td><td width="200px"><i style="color:red;" id="pointreq"></i></td>
+ </tr>
+ 
+ <tr>
+  <td><LABEL for="star">Rate your experience on a scale of 1 to 5, 
+  <br>1 being the least and 5 being the most
+  <sup style="color:#F00">* </sup></LABEL></td>
+  <td> 
+  <select id="rate">
+        <option value="rate">Rate Service</option>
+        <script type="text/javascript">
+   		for(var i=1;i<6;i++)
+    	document.write("<option value='"+i+"'>" + i+"</option> ");
+   		</script>
+  </select>
+   </td><td width="200px"><i style="color:red;" id="pointrate"></i>
+  </td>
+ 
+ <tr>
+  <td><LABEL for="feedback" style="text-align:left;">Feedback<sup style="color:#F00">* </sup></LABEL></td>
+  <td><textarea id="feedback"  name="feedback" rows="5" cols="35"></textarea></td>
+  <td width="200px"><i style="color:red;" id="pointfeed"></i>   
+  </td>
+ </tr>
+ </table>
+ 
+ <table class="center">
+ <tr>
+ <td><input type="submit" onClick="return validateForm()" value="Proceed to Payment" style="align:center">
+  <input type="reset" onClick="return confirmreset()"></td>
+ </tr>
+ 
+ <tr>
+  <td></td>
+  <td style="font-size:12px;text-align:right;"><br/><i style="color:red;font-size:12px;align:right;" >
+  * - Mandatory</i></td>
+ </tr>
+ </table>
+ 
+ </div></div></div>
+ <br><br><br>
+ <div class="image">
+    <img src="C:\Users\Jayasmita\Downloads\footer.png">
+    <style type="text/css">
+	img{
+	opacity: 0.95; 
+	filter:alpha(opacity=95);
+	}
+</style>
+</div>
+ 
+ </form>
+ </div></div>
+ 
+</body>
+</html>
